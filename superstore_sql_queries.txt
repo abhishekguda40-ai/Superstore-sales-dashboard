@@ -1,0 +1,46 @@
+-- Superstore Sales Analysis - SQL Project
+-- By Abhishek Guda
+
+-- Query 1: Total Sales by Region
+SELECT c13 AS Region, SUM(CAST(c18 AS REAL)) AS Total_Sales
+FROM train
+WHERE c1 != 'Row ID'
+GROUP BY c13
+ORDER BY Total_Sales DESC;
+
+-- Query 2: Total Sales by Category
+SELECT c16 AS Category, SUM(CAST(c18 AS REAL)) AS Total_Sales
+FROM train
+WHERE c1 != 'Row ID'
+GROUP BY c16
+ORDER BY Total_Sales DESC;
+
+-- Query 3: Top 10 Customers by Sales
+SELECT c7 AS Customer_Name, SUM(CAST(c18 AS REAL)) AS Total_Sales
+FROM train
+WHERE c1 != 'Row ID'
+GROUP BY c7
+ORDER BY Total_Sales DESC
+LIMIT 10;
+
+-- Query 4: Sales by Segment
+SELECT c8 AS Segment, SUM(CAST(c18 AS REAL)) AS Total_Sales
+FROM train
+WHERE c1 != 'Row ID'
+GROUP BY c8
+ORDER BY Total_Sales DESC;
+
+-- Query 5: Orders by Ship Mode
+SELECT c5 AS Ship_Mode, COUNT(*) AS Total_Orders
+FROM train
+WHERE c1 != 'Row ID'
+GROUP BY c5
+ORDER BY Total_Orders DESC;
+
+-- Query 6: Top 10 States by Sales
+SELECT c11 AS State, SUM(CAST(c18 AS REAL)) AS Total_Sales
+FROM train
+WHERE c1 != 'Row ID'
+GROUP BY c11
+ORDER BY Total_Sales DESC
+LIMIT 10;
